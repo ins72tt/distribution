@@ -4,8 +4,6 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
-const fs = require('fs');
-const path = require('path');
 
 const app = express();
 
@@ -26,7 +24,6 @@ app.set('view engine', 'ejs');
 
 // BodyParser Middleware
 app.use(express.urlencoded({ extended: false }));
-app.use(express.json()); // To handle JSON data
 
 // Express Session Middleware
 app.use(session({
@@ -50,18 +47,9 @@ app.use((req, res, next) => {
     next();
 });
 
-// Create uploads directory if it doesn't exist
-const uploadsDir = path.join(__dirname, 'uploads');
-if (!fs.existsSync(uploadsDir)){
-    fs.mkdirSync(uploadsDir);
-}
-
 // Routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
-
-// Import and use the dashboard routes
-app.use('/', require('./routes/dashboard'));
 
 const PORT = process.env.PORT || 5000;
 

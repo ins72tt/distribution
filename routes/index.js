@@ -25,7 +25,7 @@ router.post('/submit-form', ensureAuthenticated, (req, res) => {
     const csvData = formatFormDataToCSV(formData);
 
     // Define the file path
-    const filePath = path.join(__dirname, '..', 'uploads', 'music_submission.csv');
+    const filePath = path.join(__dirname, '..', 'music_submission.csv');
 
     // Write CSV data to a file on the server
     fs.writeFile(filePath, csvData, (err) => {

@@ -168,7 +168,8 @@
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('Form data saved successfully.');
+                // Redirect to the dashboard with a success message
+                window.location.href = '/dashboard?message=Form+submitted+successfully';
             } else {
                 alert('Error saving form data.');
             }
@@ -179,7 +180,7 @@
         });
     }
 
-    // Update sub-genres function
+    // Update sub-genres function (no change needed here)
     function updateSubGenres(genre) {
         var subGenreSelect = document.getElementById("subGenre");
         subGenreSelect.innerHTML = '<option value="">Select sub-genre</option>';

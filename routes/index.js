@@ -9,7 +9,8 @@ router.get('/', (req, res) => res.render('welcom'));
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, (req, res) => 
     res.render('dashboard', {
-        name: req.user.name
+        name: req.user.name,
+        message: req.query.message // Pass the message to the dashboard view
     }));
 
 // Form Page

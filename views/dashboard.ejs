@@ -11,6 +11,11 @@
 	<p class="lead mb-3">
 		Welcome: <%= name %>
 	</p>
+	<% if (message) { %>
+	<div style="color: green; font-size: larger;">
+		<%= message %>
+	</div>
+	<% } %>
 
 	<!-- Dashboard Summary -->
 	<div class="row" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px;">

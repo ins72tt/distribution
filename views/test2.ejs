@@ -1,27 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' http://williamam.online/; font-src 'self' https://fonts.gstatic.com/; style-src 'self' http://fonts.googleapis.com/">
-
-					<title>New Form</title>
-				<link rel="stylesheet" href="/styles.css">
-</head>
-	<body>
-		<%- include=""('partials/header') %>
-			<h1>New Form</h1>
-			<form action="/new" method="post">
-				<div>
-					<label for="title">Title:</label>
-					<input type="text" id="title" name="title" required="">
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body text-center">
+      <p>Create an account or login</p>
+      <form action="/users/register" method="POST">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Username" name="username">
         </div>
-				<div>
-					<label for="description">Description:</label>
-					<textarea id="description" name="description" required=""></textarea>
-				</div>
-				<button type="submit">Submit</button>
-			</form>
-			<%- include=""('partials/footer') %>
-</body>
-</html>
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Email" name="email">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mb-2">Register</button>
+      </form>
+      <a href="/users/login" class="btn btn-secondary btn-block">Login</a>
+    </div>
+  </div>
+</div>

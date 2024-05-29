@@ -1,13 +1,13 @@
 {
   "name": "Node_Passport_Login",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node.js Passport login system",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
-  "keywords": [],
+  "keywords": [ "node", "passport", "login", "authentication" ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -19,7 +19,8 @@
     "express-session": "^1.17.1",
     "mongoose": "^5.11.15",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "body-parser": "^1.19.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

@@ -11,7 +11,7 @@ const User = require('../models/User');
 router.get('/login', (req, res) => res.render('login'));
 
 //	NewRelease Page
-router.get('/new', (req, res) => res.render('newrelease'));
+router.get('/new', (req, res) => res.render('new'));
 
 //	Register Page
 router.get('/register', (req, res) => res.render('register'));

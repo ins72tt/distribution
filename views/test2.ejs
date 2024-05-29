@@ -1,9 +1,4 @@
-<div style="text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+<div style="text-align: center; max-width: 600px; margin: 0 auto; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
     <h2>New Release</h2>
     <div style="display: flex; justify-content: center;">
         <form id="releaseForm" style="text-align: left;" onsubmit="handleSubmit(event)">
@@ -143,13 +138,48 @@
         </div>
 
         <!-- Submit button -->
-<div style="text-align: center; margin-top: 20px;">
-    <button type="submit" style="width: 100%; height: 40px; font-size: larger;" onclick="handleFormSubmit()">Submit</button>
-</div>
+        <div style="text-align: center; margin-top: 20px;">
+            <button type="submit" style="width: 100%; height: 40px; font-size: larger;">Submit</button>
+        </div>
 
     </form>
 </div></div>
 <script>
+    function handleSubmit(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Extract form data
+        var formData = new FormData(document.getElementById("releaseForm"));
+
+        // Convert formData to a JSON object
+        var formObject = {};
+        formData.forEach((value, key) => {
+            formObject[key] = value;
+        });
+
+        // Send data to the server
+        fetch('/submit-form', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formObject)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Form data saved successfully.');
+            } else {
+                alert('Error saving form data.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error saving form data.');
+        });
+    }
+
+    // Update sub-genres function
     function updateSubGenres(genre) {
         var subGenreSelect = document.getElementById("subGenre");
         subGenreSelect.innerHTML = '<option value="">Select sub-genre</option>';
@@ -180,46 +210,5 @@
                 subGenreSelect.appendChild(option);
             });
         }
-    }
-</script>
-<script>
-    function handleFormSubmit() {
-        // Extract form data
-        var artistName = document.getElementById("artistName").value;
-        var albumName = document.getElementById("albumName").value;
-        var genre = document.getElementById("genre").value;
-        var subGenre = document.getElementById("subGenre").value;
-        var labelName = document.getElementById("labelName").value;
-        var publisher = document.getElementById("publisher").value;
-        var tiktokClipStartTime = document.getElementById("tiktokClipStartTime").value;
-        var songwriter = document.getElementById("songwriter").value;
-        var originalReleaseDate = document.getElementById("originalReleaseDate").value;
-        var language = document.getElementById("language").value;
-        var explicit = document.getElementById("explicit").value;
-        var coverArtCheck = document.getElementById("coverArtCheck").value;
-        var uploadMusic = document.getElementById("uploadMusic").value;
-
-        // Format form data into CSV
-        var csvData = [
-            ["Artist Name", "Album/Single Name", "Genre", "Sub-Genre", "Label Name", "Publisher", "TikTok Clip Start Time", "Songwriter", "Original Release Date", "Language", "Explicit", "Cover Art Check", "Upload Music"],
-            [artistName, albumName, genre, subGenre, labelName, publisher, tiktokClipStartTime, songwriter, originalReleaseDate, language, explicit, coverArtCheck, uploadMusic]
-        ].map(function (row) {
-            return row.join(",");
-        }).join("\n");
-
-        // Create a blob with the CSV data
-        var blob = new Blob([csvData], { type: "text/csv" });
-        var url = URL.createObjectURL(blob);
-
-        // Trigger download
-        var link = document.createElement("a");
-        link.setAttribute("href", url);
-        link.setAttribute("download", "music_submission.csv");
-        document.body.appendChild(link);
-        link.click();
-
-        // Clean up
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
     }
 </script>

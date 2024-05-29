@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs');
-const path = require('path');
 const { ensureAuthenticated } = require('../config/auth');
 const FormData = require('../models/FormData');
 
@@ -20,7 +18,12 @@ router.get('/new', ensureAuthenticated, (req, res) =>
 
 router.post('/submit-form', ensureAuthenticated, async (req, res) => {
   try {
-    const formData = new FormData(req.body);
+    // Add the email from the authenticated user to the form data
+    const formData = new FormData({
+      ...req.body,
+      email: req.user.email
+    });
+    
     await formData.save();
     console.log('Form data saved successfully.');
     return res.status(200).json({ success: true, message: 'Form data saved successfully.' });

@@ -14,9 +14,10 @@ require('./config/passport')(passport);
 const db = require('./config/keys').MongoURI;
 
 // Connect to MongoDB
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB Connected'))
-    .catch(err => console.log(err));
+mongoose
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
 
 // EJS
 app.use(expressLayouts);
@@ -25,11 +26,14 @@ app.set('view engine', 'ejs');
 // BodyParser Middleware
 app.use(express.urlencoded({ extended: false }));
 
+// JSON Middleware
+app.use(express.json());
+
 // Express Session Middleware
 app.use(session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
 }));
 
 // Passport Middleware
@@ -41,10 +45,10 @@ app.use(flash());
 
 // Global Variables
 app.use((req, res, next) => {
-    res.locals.success_msg = req.flash('success_msg');
-    res.locals.error_msg = req.flash('error_msg');
-    res.locals.error = req.flash('error');
-    next();
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
 });
 
 // Routes

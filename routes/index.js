@@ -17,37 +17,23 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
 router.get('/new', ensureAuthenticated, (req, res) => 
     res.render('test2'));
 
-// Handle Form Submission
-router.post('/submit-form', ensureAuthenticated, (req, res) => {
+router.post('/submit-form', ensureAuthenticated, async (req, res) => {
+  try {
+    await client.connect();
+    const database = client.db('your-database-name');
+    const collection = database.collection('form-data');
+
     const formData = req.body;
+    const result = await collection.insertOne(formData);
 
-    // Format form data into CSV format
-    const csvData = formatFormDataToCSV(formData);
-
-    // Define the file path
-    const filePath = path.join(__dirname, '..', 'music_submission.csv');
-
-    // Write CSV data to a file on the server
-    fs.writeFile(filePath, csvData, (err) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).json({ success: false, message: 'Error saving form data.' });
-        } else {
-            console.log('Form data saved successfully.');
-            return res.status(200).json({ success: true, message: 'Form data saved successfully.' });
-        }
-    });
+    console.log('Form data saved successfully.');
+    return res.status(200).json({ success: true, message: 'Form data saved successfully.' });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ success: false, message: 'Error saving form data.' });
+  } finally {
+    await client.close();
+  }
 });
-
-// Format form data into CSV
-function formatFormDataToCSV(formData) {
-    // Extract and format form data into CSV
-    const headers = ["Artist Name", "Album/Single Name", "Genre", "Sub-Genre", "Label Name", "Publisher", "TikTok Clip Start Time", "Songwriter", "Original Release Date", "Language", "Explicit", "Cover Art Check", "Upload Music"];
-    const values = [
-        formData.artistName, formData.albumName, formData.genre, formData.subGenre, formData.labelName, formData.publisher, formData.tiktokClipStartTime, formData.songwriter, formData.originalReleaseDate, formData.language, formData.explicit, formData.coverArtCheck, formData.uploadMusic
-    ];
-
-    return `${headers.join(",")}\n${values.join(",")}\n`;
-}
 
 module.exports = router;

@@ -12,4 +12,8 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
 		name: req.user.name
 	}));
 
+//	NewRelease Page
+router.get('/new', ensureAuthenticated, (req, res) =>
+	res.render('new'));
+
 module.exports = router;

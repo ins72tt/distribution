@@ -19,9 +19,6 @@ mongoose
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
-  //static
-  app.use(express.static(path.join(__dirname, 'public')));
-
 // EJS
 app.use(expressLayouts);
 app.set('view engine', 'ejs');

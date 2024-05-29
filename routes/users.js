@@ -10,6 +10,9 @@ const User = require('../models/User');
 //	Login Page
 router.get('/login', (req, res) => res.render('login'));
 
+//	Login Page
+router.get('/newrelease', (req, res) => res.render('newrelease'));
+
 //	Register Page
 router.get('/register', (req, res) => res.render('register'));
 

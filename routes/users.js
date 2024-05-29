@@ -17,7 +17,7 @@ router.get('/register', (req, res) => res.render('register'));
 router.get('/test', (req, res) => res.render('test'));
 
 //	Register Page
-router.get('/test2', (req, res) => res.render('test'));
+router.get('/test2', (req, res) => res.render('test2'));
 
 //	Register Page
 router.get('/test3', (req, res) => res.render('test'));

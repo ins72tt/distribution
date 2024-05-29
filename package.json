@@ -1,7 +1,7 @@
 {
-  "name": "Node_Passport_Login",
+  "name": "Freshrec Music Disribution",
   "version": "1.0.0",
-  "description": "Node.js Passport login system",
+  "description": "Freshrec Music Disribution",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

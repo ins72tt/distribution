@@ -12,4 +12,8 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
 		name: req.user.name
 	}));
 
+	//	Welcome Page
+router.get('/new', ensureAuthenticated, (req, res) =>
+res.render('test2'));
+
 module.exports = router;

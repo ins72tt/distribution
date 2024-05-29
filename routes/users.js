@@ -22,9 +22,6 @@ router.get('/test2', (req, res) => res.render('test2'));
 //	Register Page
 router.get('/test3', (req, res) => res.render('test'));
 
-//	Register Page
-router.get('/new', (req, res) => res.render('new'));
-
 //all other
 router.get('*', (req, res) => res.render('welcom'));
 

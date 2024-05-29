@@ -8,13 +8,13 @@ const passport = require('passport');
 const User = require('../models/User');
 
 //	Login Page
-router.get('/login', (req, res) => res.render('login'));
+router.get('users/login', (req, res) => res.render('login'));
 
 //	Register Page
-router.get('/register', (req, res) => res.render('register'));
+router.get('users/register', (req, res) => res.render('register'));
 
 //	Register Handle
-router.post('/register', (req, res) => {
+router.post('users/register', (req, res) => {
 	const { name, email, password, password2 } = req.body;
 	let errors = [];
 
@@ -84,7 +84,7 @@ router.post('/register', (req, res) => {
 });
 
 //	Login Handle
-router.post('/login', (req, res, next) => {
+router.post('users/login', (req, res, next) => {
 	passport.authenticate('local', { 
 		successRedirect: '/dashboard',
         failureRedirect: '/users/login',
@@ -93,7 +93,7 @@ router.post('/login', (req, res, next) => {
 });
 
 //	Logout Handle
-router.get('/logout', (req, res, next) => {
+router.get('users/logout', (req, res, next) => {
 	req.logout();
 	req.flash('success_msg', 'You are logged out');
 	res.redirect('/users/login');

@@ -91,9 +91,12 @@
             <div>
                 <div>
                     <label for="originalReleaseDate" style="font-size: larger;">Original Release Date</label><br>
-                    <input type="date" id="originalReleaseDate" name="originalReleaseDate" placeholder="Enter original release date" style="height: 40px;font-size: larger;"><br>
+                    <!-- Add the 'flatpickr-input' class and 'flatpickr' attribute -->
+                    <input type="text" id="originalReleaseDate" name="originalReleaseDate" placeholder="Enter original release date" style="height: 40px; font-size: larger;" class="flatpickr-input" data-input>
+                    <br>
                     Please enter the original release date.
                 </div>
+
 
                 <div>
                     <label for="language" style="font-size: larger;">Language</label><br>

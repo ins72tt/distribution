@@ -13,7 +13,8 @@ const formDataSchema = new mongoose.Schema({
   language: String,
   explicit: { type: String, required: true },
   coverArtCheck: { type: String, required: true },
-  uploadMusic: { type: String, required: true }
+  uploadMusic: { type: String, required: true },
+  email: { type: String, required: true } // Add email field
 });
 
 const FormData = mongoose.model('FormData', formDataSchema);

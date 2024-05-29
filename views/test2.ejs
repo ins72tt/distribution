@@ -1,22 +1,175 @@
-<div class="row mt-5">
-  <div class="col-md-6 m-auto">
-    <div class="card card-body text-center">
-      <p>Submit your new release</p>
-      <form action="/submit-release" method="POST">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Artist Name" name="artist">
+<div style="text-align: center;">
+    <h2>New Release</h2>
+    <div style="display: flex; justify-content: center;">
+        <form id="releaseForm" style="text-align: left;" onsubmit="handleSubmit(event)">
+
+            <!-- Artist Name and Album/Single Name -->
+            <div>
+                <div>
+                    <label for="artistName" style="font-size: larger;">Artist Name</label><br>
+                    <input type="text" id="artistName" name="artistName" required placeholder="Enter artist name" style="width: 100%; height: 40px; font-size: larger;"><br>
+                    <span style="font-size: smaller; color: red;">[REQUIRED]</span> Please input artist name. Please follow the <a href="https://goo.gl/vQ9HzL" style="color: red; font-size: smaller;" target="_blank">Style Guide</a>
+                </div>
+
+                <div>
+                    <label for="albumName" style="font-size: larger;">Album/Single Name</label><br>
+                    <input type="text" id="albumName" name="albumName" required placeholder="Enter album/single name" style="width: 100%; height: 40px; font-size: larger;"><br>
+                    <span style="font-size: smaller; color: red;">[REQUIRED]</span> Please input the name of the Album/Single.
+                </div>
+            </div>
+
+            <!-- Genre and Sub-Genre -->
+            <div>
+                <div>
+                    <label for="genre" style="font-size: larger;">Genre</label><br>
+                    <select id="genre" name="genre" required style="width: 100%; height: 40px; font-size: larger;" onchange="updateSubGenres(this.value)">
+                        <option value="">Select genre</option>
+                        <option value="Alternative">Alternative</option>
+                        <option value="Blues">Blues</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Country">Country</option>
+                        <option value="Dance">Dance</option>
+                        <option value="Electronic">Electronic</option>
+                        <option value="Folk">Folk</option>
+                        <option value="Hip-Hop/Rap">Hip-Hop/Rap</option>
+                        <option value="Jazz">Jazz</option>
+                        <option value="Latin">Latin</option>
+                        <option value="Pop">Pop</option>
+                        <option value="R&B/Soul">R&B/Soul</option>
+                        <option value="Reggae">Reggae</option>
+                        <option value="Rock">Rock</option>
+                        <option value="World">World</option>
+                        <!-- Add more genre options as needed -->
+                    </select><br>
+                    <span style="font-size: smaller; color: red;">[REQUIRED]</span> Please select the genre of this release.
+                </div>
+
+                <div>
+                    <label for="subGenre" style="font-size: larger;">Sub-Genre</label><br>
+                    <select id="subGenre" name="subGenre" required style="width: 100%; height: 40px; font-size: larger;">
+                        <option value="">Select sub-genre</option>
+                        <!-- Sub-genre options will be added dynamically based on the selected main genre -->
+                    </select><br>
+                    <span style="font-size: smaller; color: red;">[REQUIRED]</span> Please select sub genre.
+                </div>
+            </div>
+
+            <!-- Label Name and Publisher -->
+            <div>
+                <div>
+                    <label for="labelName" style="font-size: larger;">Label Name</label><br>
+                    <input type="text" id="labelName" name="labelName" placeholder="Enter label name" style="width: 100%; height: 40px; font-size: larger;" value="freshrec.co"><br>
+                    Please enter the name of your label. If you don't have one, we will take care of it.
+                </div>
+                <div>
+                    <label for="publisher" style="font-size: larger;">Publisher</label><br>
+                    <input type="text" id="publisher" name="publisher" required placeholder="Enter publisher name" style="width: 100%; height: 40px; font-size: larger;" value="freshrec.co"><br>
+                    <span style="font-size: smaller; color: red;">[REQUIRED]</span> Please input the name of your publisher. If you don't have one, write "self-published".
+                </div>
+            </div>
+
+            <!-- TikTok Clip Start Time and Songwriter -->
+            <div>
+                <div>
+                    <label for="tiktokClipStartTime" style="font-size: larger;">TikTok Clip Start Time</label><br>
+                    <input type="text" id="tiktokClipStartTime" name="tiktokClipStartTime" placeholder="Enter clip start time" style="width: 100%; height: 40px; font-size: larger;"><br>
+                    Please enter clip start time in MM:SS format. By default, clip starts at 30 seconds. The clip will play for 60 seconds.
+                </div>
+                <div>
+                    <label for="songwriter" style="font-size: larger;">Songwriter</label><br>
+                    <input type="text" id="songwriter" name="songwriter" required placeholder="Enter songwriter name" style="width: 100%; height: 40px; font-size: larger;"><br>
+                    <span style="font-size: smaller; color: red;">[REQUIRED]</span> Please enter the songwriter of this track. Must be a real name, not a stage name.
+                </div>
+            </div>
+
+            <!-- Original Release Date and Language -->
+            <div>
+                <div>
+                    <label for="originalReleaseDate" style="font-size: larger;">Original Release Date</label><br>
+                    <input type="date" id="originalReleaseDate" name="originalReleaseDate" placeholder="Enter original release date" style="width: 100%; height: 40px; font-size: larger;"><br>
+                    Please enter the original release date.
+                </div>
+
+                <div>
+                    <label for="language" style="font-size: larger;">Language</label><br>
+                    <input type="text" id="language" name="language" placeholder="Enter language" style="width: 100%; height: 40px; font-size: larger;"><br>
+                    Please enter the language of the song lyrics. If English, leave blank.
+                </div>
+            </div>
+
+            <!-- Explicit and Cover Art Check -->
+            <div>
+                <div>
+                    <label for="explicit" style="font-size: larger;">Explicit</label><br>
+                    <select id="explicit" name="explicit" required style="width: 100%; height: 40px; font-size: larger;">
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select><br>
+                    <span style="font-size: smaller; color: red;">[REQUIRED]</span> Does your content contain profanity?
+                </div>
+                <div>
+                    <label for="coverArtCheck" style="font-size: larger;">Cover Art Check</label><br>
+                    <select id="coverArtCheck" name="coverArtCheck" required style="width: 100%; height: 40px; font-size: larger;">
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select><br>
+                    <span style="font-size: smaller; color: red;">[REQUIRED]</span> Cover art ONLY contains artist name and release name. Cover art is not super blurry/pixelated when zoomed in. Cover art has no borders.
+                </div>
+            </div>
+            <!-- Song upload -->
+        <div>
+            <div>
+                <label for="uploadMusic" style="font-size: larger;">Upload Music</label><br>
+                <input type="url" id="uploadMusic" name="uploadMusic" required placeholder="Enter link to your music" style="width: 100%; height: 40px; font-size: larger;"><br>
+                <span style="font-size: smaller; color: red;">[REQUIRED]</span> Your final step. Follow the instructions <a href="#" style="color: red; font-size: smaller;" onclick="showInstructions()">here.</a>
+            </div>
+
+            <script>
+                function showInstructions() {
+                    var message = `HOW TO UPLOAD YOUR MUSIC\n\n1. Ensure your song files are in WAV format, 16-bit, and 44.1 kHz.\n\n2. Name your song files "Track Number Artist Name - Song Name" (e.g., "1 SICK LEGEND - Arcadia").\n\n3. Ensure your artwork is 3000x3000 pixels.\n\n4. Organize songs and artwork in a folder named after your album/single.\n\n5. On Windows, right-click the folder, select "Send to" -> "Compressed (zipped) folder". On Mac, right-click the folder, and select "Compress".\n\n6. Upload the ZIP folder to a cloud storage service (e.g., Google Drive, Dropbox).\n\n7. Copy the shareable link and paste it in the "Upload Music" field.`;
+                    alert(message);
+                }
+            </script>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Song Title" name="title">
+
+        <!-- Submit button -->
+        <div style="text-align: center; margin-top: 20px;">
+            <button type="submit" style="width: 100%; height: 40px; font-size: larger;">Submit</button>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Release URL (Google Drive)" name="releaseUrl">
-        </div>
-        <div class="form-group">
-          <textarea class="form-control" placeholder="Description" name="description" rows="4"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block mb-2">Submit</button>
-      </form>
-    </div>
-  </div>
-</div>
+    </form>
+</div></div>
+<script>
+    function updateSubGenres(genre) {
+        var subGenreSelect = document.getElementById("subGenre");
+        subGenreSelect.innerHTML = '<option value="">Select sub-genre</option>';
+        var subGenres = {
+            "Alternative": ["Indie Rock", "Grunge", "Emo"],
+            "Blues": ["Delta Blues", "Electric Blues", "Blues Rock"],
+            "Comedy": ["Musical Comedy", "Parody"],
+            "Country": ["Bluegrass", "Honky Tonk", "Country Pop"],
+            "Dance": ["House", "Techno", "Trance"],
+            "Electronic": ["Ambient", "Synthwave", "Dubstep"],
+            "Folk": ["Traditional Folk", "Folk Rock", "Indie Folk"],
+            "Hip-Hop/Rap": ["Trap", "Boom Bap", "Conscious Rap"],
+            "Jazz": ["Bebop", "Swing", "Fusion"],
+            "Latin": ["Reggaeton", "Salsa", "Bachata"],
+            "Pop": ["Synth-pop", "Dance-pop", "Electropop"],
+            "R&B/Soul": ["Neo Soul", "Contemporary R&B", "Motown"],
+            "Reggae": ["Roots Reggae", "Dancehall", "Dub"],
+            "Rock": ["Classic Rock", "Hard Rock", "Progressive Rock"],
+            "World": ["Afrobeat", "Flamenco", "Celtic"]
+            // Add more sub-genres as needed
+        };
+
+        if (subGenres[genre]) {
+            subGenres[genre].forEach(function(subGenre) {
+                var option = document.createElement("option");
+                option.value = subGenre;
+                option.textContent = subGenre;
+                subGenreSelect.appendChild(option);
+            });
+        }
+    }
+</script>

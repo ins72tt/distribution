@@ -20,7 +20,7 @@ router.get('/new', ensureAuthenticated, (req, res) =>
 router.post('/submit-form', ensureAuthenticated, async (req, res) => {
   try {
     await client.connect();
-    const database = client.db('your-database-name');
+    const database = client.db('form');
     const collection = database.collection('form-data');
 
     const formData = req.body;

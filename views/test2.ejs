@@ -181,3 +181,44 @@
         }
     }
 </script>
+<script>
+    function handleFormSubmit() {
+        // Extract form data
+        var artistName = document.getElementById("artistName").value;
+        var albumName = document.getElementById("albumName").value;
+        var genre = document.getElementById("genre").value;
+        var subGenre = document.getElementById("subGenre").value;
+        var labelName = document.getElementById("labelName").value;
+        var publisher = document.getElementById("publisher").value;
+        var tiktokClipStartTime = document.getElementById("tiktokClipStartTime").value;
+        var songwriter = document.getElementById("songwriter").value;
+        var originalReleaseDate = document.getElementById("originalReleaseDate").value;
+        var language = document.getElementById("language").value;
+        var explicit = document.getElementById("explicit").value;
+        var coverArtCheck = document.getElementById("coverArtCheck").value;
+        var uploadMusic = document.getElementById("uploadMusic").value;
+
+        // Format form data into CSV
+        var csvData = [
+            ["Artist Name", "Album/Single Name", "Genre", "Sub-Genre", "Label Name", "Publisher", "TikTok Clip Start Time", "Songwriter", "Original Release Date", "Language", "Explicit", "Cover Art Check", "Upload Music"],
+            [artistName, albumName, genre, subGenre, labelName, publisher, tiktokClipStartTime, songwriter, originalReleaseDate, language, explicit, coverArtCheck, uploadMusic]
+        ].map(function (row) {
+            return row.join(",");
+        }).join("\n");
+
+        // Create a blob with the CSV data
+        var blob = new Blob([csvData], { type: "text/csv" });
+        var url = URL.createObjectURL(blob);
+
+        // Trigger download
+        var link = document.createElement("a");
+        link.setAttribute("href", url);
+        link.setAttribute("download", "music_submission.csv");
+        document.body.appendChild(link);
+        link.click();
+
+        // Clean up
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+</script>

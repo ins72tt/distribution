@@ -16,6 +16,18 @@ router.get('/register', (req, res) => res.render('register'));
 //	Register Page
 router.get('/test', (req, res) => res.render('test'));
 
+//	Register Page
+router.get('/test2', (req, res) => res.render('test'));
+
+//	Register Page
+router.get('/test3', (req, res) => res.render('test'));
+
+//	Register Page
+router.get('/new', (req, res) => res.render('new'));
+
+//all other
+router.get('*', (req, res) => res.render('welcom'));
+
 //	Register Handle
 router.post('/register', (req, res) => {
 	const { name, email, password, password2 } = req.body;

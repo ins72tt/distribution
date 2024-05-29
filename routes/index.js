@@ -12,8 +12,16 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
 		name: req.user.name
 	}));
 
-//	NewRelease Page
-router.get('/new', ensureAuthenticated, (req, res) =>
-	res.render('new'));
+// Route to serve the new form page
+router.get('/new', (req, res) => {
+    res.render('new');
+});
+
+// Route to handle form submission
+router.post('/new', (req, res) => {
+    const { title, description } = req.body;
+    // You can add logic here to save the data to a database, etc.
+    res.send(`Form submitted! Title: ${title}, Description: ${description}`);
+});
 
 module.exports = router;

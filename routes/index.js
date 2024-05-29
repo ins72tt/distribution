@@ -12,7 +12,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
 		name: req.user.name
 	}));
 
-	router.get('/new-release', ensureAuthenticated, (req, res) => 
+	router.get('/newrelease', ensureAuthenticated, (req, res) => 
 	res.render('new', {
 		name: req.user.name
 	}));

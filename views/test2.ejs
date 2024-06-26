@@ -86,16 +86,11 @@ If you don't have one, we will take care of it.
 				<!-- Original Release Date and Language -->
 				<div>
 					<label for="originalReleaseDate" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Original Release Date</label>
-					<div class="flatpickr-wrapper" style="
-    color: white;
-">
-						
-
+					<input type="text" id="originalReleaseDate" name="originalReleaseDate" placeholder="Select date" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;" readonly="">
+						<div id="datePickerContainer" style="margin-bottom: 10px;"></div>
+						Please enter the original release date.
+						<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span>
 					</div>
-					<div id="datePickerContainer" style="margin-bottom: 10px;"></div>
-					Please enter the original release date.
-					<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span>
-				</div>
 
 				<!-- Explicit and Cover Art Check -->
 				<div>
@@ -213,4 +208,76 @@ If you don't have one, we will take care of it.
 		});
 		}
 		}
+		document.addEventListener('DOMContentLoaded', function() {
+		flatpickr("#originalReleaseDate", {
+		dateFormat: "Y-m-d",
+		defaultDate: "2024-06-27",
+		maxDate: new Date().fp_incr(365), // Allows dates up to 1 year in the future
+		disableMobile: "true",
+		allowInput: false,
+		clickOpens: true,
+		inline: true,
+		static: true,
+		appendTo: document.getElementById('datePickerContainer'),
+		onReady: function(dateObj, dateStr, instance) {
+		var calendarElem = instance.calendarContainer;
+		calendarElem.style.background = "#000000";
+		calendarElem.style.color = "#ffffff";
+		calendarElem.style.boxShadow = "0 3px 13px rgba(0,0,0,0.08)";
+		calendarElem.style.width = "100%";
+		calendarElem.style.maxWidth = "400px";
+
+		function styleCalendar() {
+		// Style days
+		var dayElems = calendarElem.querySelectorAll('.flatpickr-day');
+		dayElems.forEach(function(dayElem) {
+		dayElem.style.color = "#ffffff";
+		dayElem.style.background = "#000000";
+		dayElem.style.border = "1px solid #333333";
+		});
+
+		// Style month dropdown and navigation
+		var monthElements = calendarElem.querySelectorAll('.flatpickr-month, .flatpickr-monthDropdown-months, .flatpickr-weekdays');
+		monthElements.forEach(function(elem) {
+		elem.style.background = "#000000";
+		elem.style.color = "#ffffff";
+		});
+
+		// Style weekday names
+		var weekdayElems = calendarElem.querySelectorAll('.flatpickr-weekday');
+		weekdayElems.forEach(function(elem) {
+		elem.style.color = "#ffffff";
+		});
+
+		// Style arrows
+		var arrows = calendarElem.querySelectorAll('.flatpickr-prev-month, .flatpickr-next-month');
+		arrows.forEach(function(arrow) {
+		arrow.style.fill = "#ffffff";
+		});
+
+		// Style current month and year
+		var currentMonthYear = calendarElem.querySelectorAll('.cur-month, .cur-year, .numInputWrapper, .numInput, .arrowUp, .arrowDown');
+		currentMonthYear.forEach(function(elem) {
+		elem.style.color = "#ffffff";
+		});
+
+		// Style month dropdown options
+		var monthOptions = calendarElem.querySelectorAll('.flatpickr-monthDropdown-month');
+		monthOptions.forEach(function(option) {
+		option.style.color = "#ffffff";
+		option.style.background = "#000000";
+		});
+		}
+
+		styleCalendar();
+
+		// Re-apply styles whenever the month or year changes
+		instance.config.onMonthChange = styleCalendar;
+		instance.config.onYearChange = styleCalendar;
+		},
+		onChange: function(selectedDates, dateStr, instance) {
+		document.getElementById('originalReleaseDate').value = dateStr;
+		}
+		});
+		});
 	</script>

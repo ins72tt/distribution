@@ -242,18 +242,17 @@
 		flatpickr("#originalReleaseDate", {
 		dateFormat: "Y-m-d",
 		defaultDate: "2024-06-27",
-		minDate: "today",
 		maxDate: new Date().fp_incr(365), // Allows dates up to 1 year in the future
-		disableMobile: "true",
-		allowInput: false,
+		disableMobile: "false",
+		allowInput: true,
 		clickOpens: true,
 		inline: true,
 		static: true,
 		appendTo: document.getElementById('datePickerContainer'),
 		onReady: function(dateObj, dateStr, instance) {
 		var calendarElem = instance.calendarContainer;
-		calendarElem.style.background = "#222";
-		calendarElem.style.color = "white";
+		calendarElem.style.background = "#000000";
+		calendarElem.style.color = "#ffffff";
 		calendarElem.style.boxShadow = "0 3px 13px rgba(0,0,0,0.08)";
 		calendarElem.style.width = "100%";
 		calendarElem.style.maxWidth = "400px";
@@ -261,22 +260,35 @@
 		// Style days
 		var dayElems = calendarElem.querySelectorAll('.flatpickr-day');
 		dayElems.forEach(function(dayElem) {
-		dayElem.style.color = "white";
-		dayElem.style.background = "#333";
+		dayElem.style.color = "#ffffff";
+		dayElem.style.background = "#000000";
+		dayElem.style.border = "1px solid #333333";
 		});
 
 		// Style month dropdown and navigation
 		var monthElements = calendarElem.querySelectorAll('.flatpickr-month, .flatpickr-monthDropdown-months, .flatpickr-weekdays');
 		monthElements.forEach(function(elem) {
-		elem.style.background = "#222";
-		elem.style.color = "white";
+		elem.style.background = "#000000";
+		elem.style.color = "#ffffff";
 		});
 
 		// Style weekday names
 		var weekdayElems = calendarElem.querySelectorAll('.flatpickr-weekday');
 		weekdayElems.forEach(function(elem) {
-		elem.style.color = "#ccc";
+		elem.style.color = "#ffffff";
 		});
+
+		// Style arrows
+		var arrows = calendarElem.querySelectorAll('.flatpickr-prev-month, .flatpickr-next-month');
+		arrows.forEach(function(arrow) {
+		arrow.style.fill = "#ffffff";
+		});
+
+		// Style current month and year
+		var currentMonthYear = calendarElem.querySelector('.cur-month, .cur-year');
+		if (currentMonthYear) {
+		currentMonthYear.style.color = "#ffffff";
+		}
 		},
 		onChange: function(selectedDates, dateStr, instance) {
 		document.getElementById('originalReleaseDate').value = dateStr;

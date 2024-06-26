@@ -1,313 +1,317 @@
-<div class="container">
-		<div style="text-align: center; max-width: 600px; margin: 0 auto; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
-			<h2>New Release</h2>
-			<div style="display: flex; justify-content: center;">
-				<form id="releaseForm" style="text-align: left;" onsubmit="handleSubmit(event)">
+	<div style="text-align: center;color: #ffffff78;max-width: 600px;margin: 0 auto;padding: 20px;border-radius: 5px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+		<h2>New Release</h2>
+		<div style="display: flex; justify-content: center;">
+			<form id="releaseForm" style="text-align: left;" onsubmit="handleSubmit(event)">
 
+				<div>
 					<div>
-						<div>
-							<label for="artistName" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Artist Name</label>
-							<input type="text" id="artistName" name="artistName" required="" placeholder="Enter artist name" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
-								<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Please input artist name.
-							</div>
-
-						<div>
-							<label for="albumName" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Album/Single Name</label>
-							<input type="text" id="albumName" name="albumName" required="" placeholder="Enter album/single name" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
-								<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Please input the name of the Album/Single.
-							</div>
-					</div>
-
-					<!-- Genre and Sub-Genre -->
-					<div>
-						<div>
-							<label for="genre" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Genre</label>
-							<select id="genre" name="genre" required="" style="width: 100%; height: 40px; font-size: 16px; background-color: #333; color: white; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;" onchange="updateSubGenres(this.value)" data-gtm-form-interact-field-id="0">
-								<option value="">Select genre</option>
-								<option value="Alternative">Alternative</option>
-								<option value="Blues">Blues</option>
-								<option value="Comedy">Comedy</option>
-								<option value="Country">Country</option>
-								<option value="Dance">Dance</option>
-								<option value="Electronic">Electronic</option>
-								<option value="Folk">Folk</option>
-								<option value="Hip-Hop/Rap">Hip-Hop/Rap</option>
-								<option value="Jazz">Jazz</option>
-								<option value="Latin">Latin</option>
-								<option value="Pop">Pop</option>
-								<option value="R&amp;B/Soul">R&amp;B/Soul</option>
-								<option value="Reggae">Reggae</option>
-								<option value="Rock">Rock</option>
-								<option value="World">World</option>
-							</select>
-							<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Please select the genre of this release.
+						<label for="artistName" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Artist Name</label>
+						<input type="text" id="artistName" name="artistName" required="" placeholder="Enter artist name" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
+							<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Please input artist name.
 						</div>
 
-						<div>
-							<label for="subGenre" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Sub-Genre</label>
-							<select id="subGenre" name="subGenre" required="" style="width: 100%; height: 40px; font-size: 16px; background-color: #333; color: white; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
-								<option value="">Select sub-genre</option>
-								<option value="House">House</option>
-								<option value="Techno">Techno</option>
-								<option value="Trance">Trance</option>
-							</select>
-							<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Please select sub genre.
+					<div>
+						<label for="albumName" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Album/Single Name</label>
+						<input type="text" id="albumName" name="albumName" required="" placeholder="Enter album/single name" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
+							<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Please input the name of the Album/Single.
 						</div>
+				</div>
+
+				<!-- Genre and Sub-Genre -->
+				<div>
+					<div>
+						<label for="genre" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Genre</label>
+						<select id="genre" name="genre" required="" style="width: 100%; height: 40px; font-size: 16px; background-color: #333; color: white; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;" onchange="updateSubGenres(this.value)" data-gtm-form-interact-field-id="0">
+							<option value="">Select genre</option>
+							<option value="Alternative">Alternative</option>
+							<option value="Blues">Blues</option>
+							<option value="Comedy">Comedy</option>
+							<option value="Country">Country</option>
+							<option value="Dance">Dance</option>
+							<option value="Electronic">Electronic</option>
+							<option value="Folk">Folk</option>
+							<option value="Hip-Hop/Rap">Hip-Hop/Rap</option>
+							<option value="Jazz">Jazz</option>
+							<option value="Latin">Latin</option>
+							<option value="Pop">Pop</option>
+							<option value="R&amp;B/Soul">R&amp;B/Soul</option>
+							<option value="Reggae">Reggae</option>
+							<option value="Rock">Rock</option>
+							<option value="World">World</option>
+						</select>
+						<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Please select the genre of this release.
 					</div>
 
-					<!-- Label Name and Publisher -->
 					<div>
-						<div>
-							<label for="labelName" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Label Name</label>
-							<input type="text" id="labelName" name="labelName" placeholder="Enter label name" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;" value="freshrec.co">
-            Please enter the name of your label. If you don't have one, we will take care of it.
+						<label for="subGenre" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Sub-Genre</label>
+						<select id="subGenre" name="subGenre" required="" style="width: 100%; height: 40px; font-size: 16px; background-color: #333; color: white; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
+							<option value="">Select sub-genre</option>
+							<option value="House">House</option>
+							<option value="Techno">Techno</option>
+							<option value="Trance">Trance</option>
+						</select>
+						<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Please select sub genre.
+					</div>
+				</div>
+
+				<!-- Label Name and Publisher -->
+				<div>
+					<div>
+						<label for="labelName" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Label Name</label>
+						<input type="text" id="labelName" name="labelName" placeholder="Enter label name" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;" value="freshrec.co">
+							Please enter the name of your label. <br>
+If you don't have one, we will take care of it.
         </div>
-						<div>
-							<label for="publisher" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Publisher</label>
-							<input type="text" id="publisher" name="publisher" required="" placeholder="Enter publisher name" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;" value="freshrec.co">
-								<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Please input the name of your publisher. If you don't have one, write "self-published".
-							</div>
-					</div>
-
-					<!-- TikTok Clip Start Time and Songwriter -->
 					<div>
-						<div>
-							<label for="tiktokClipStartTime" style="margin: 5px 0; color: white; font-size: 18px; display: block;">TikTok Clip Start Time</label>
-							<input type="text" id="tiktokClipStartTime" name="tiktokClipStartTime" placeholder="Enter clip start time" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
-            Please enter clip start time in MM:SS format. By default, clip starts at 30 seconds. The clip will play for 60 seconds.
+						<label for="publisher" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Publisher</label>
+						<input type="text" id="publisher" name="publisher" required="" placeholder="Enter publisher name" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;" value="freshrec.co">
+							<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Please input the name of your publisher. <br> If you don't have one, write "self-published".
+							</div>
+				</div>
+
+				<!-- TikTok Clip Start Time and Songwriter -->
+				<div>
+					<div>
+						<label for="tiktokClipStartTime" style="margin: 5px 0; color: white; font-size: 18px; display: block;">TikTok Clip Start Time</label>
+						<input type="text" id="tiktokClipStartTime" name="tiktokClipStartTime" placeholder="Enter clip start time" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
+							Please enter clip start time in MM:SS format. <br> By default, clip starts at 30 seconds. The clip will play for 60 seconds.
         </div>
-						<div>
-							<label for="songwriter" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Songwriter</label>
-							<input type="text" id="songwriter" name="songwriter" required="" placeholder="Enter songwriter name" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
-								<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Please enter the songwriter of this track. Must be a real name, not a stage name.
+					<div>
+						<label for="songwriter" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Songwriter</label>
+						<input type="text" id="songwriter" name="songwriter" required="" placeholder="Enter songwriter name" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
+							<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Please enter the songwriter of this track. <br> Must be a real name, not a stage name.
+							</div>
+				</div>
+
+				<!-- Original Release Date and Language -->
+				<div>
+					<label for="originalReleaseDate" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Original Release Date</label>
+					<div class="flatpickr-wrapper">
+						<input type="text" id="originalReleaseDate" name="originalReleaseDate" placeholder="Select date" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;" class="flatpickr-input" value="2024-06-27">
+							<div class="flatpickr-calendar animate inline" tabindex="-1" style="background: rgb(0, 0, 0); color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 13px; width: 100%; max-width: 400px;">
+								<div class="flatpickr-months">
+									<span class="flatpickr-prev-month" style="fill: rgb(255, 255, 255);">
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17">
+											<g></g>
+											<path d="M5.207 8.471l7.146 7.147-0.707 0.707-7.853-7.854 7.854-7.853 0.707 0.707-7.147 7.146z"></path>
+										</svg>
+									</span>
+									<div class="flatpickr-month" style="background: rgb(0, 0, 0); color: rgb(255, 255, 255);">
+										<div class="flatpickr-current-month">
+											<select class="flatpickr-monthDropdown-months" aria-label="Month" tabindex="-1" style="background: rgb(0, 0, 0); color: rgb(255, 255, 255);">
+												<option class="flatpickr-monthDropdown-month" value="0" tabindex="-1">January</option>
+												<option class="flatpickr-monthDropdown-month" value="1" tabindex="-1">February</option>
+												<option class="flatpickr-monthDropdown-month" value="2" tabindex="-1">March</option>
+												<option class="flatpickr-monthDropdown-month" value="3" tabindex="-1">April</option>
+												<option class="flatpickr-monthDropdown-month" value="4" tabindex="-1">May</option>
+												<option class="flatpickr-monthDropdown-month" value="5" tabindex="-1">June</option>
+												<option class="flatpickr-monthDropdown-month" value="6" tabindex="-1">July</option>
+												<option class="flatpickr-monthDropdown-month" value="7" tabindex="-1">August</option>
+												<option class="flatpickr-monthDropdown-month" value="8" tabindex="-1">September</option>
+												<option class="flatpickr-monthDropdown-month" value="9" tabindex="-1">October</option>
+												<option class="flatpickr-monthDropdown-month" value="10" tabindex="-1">November</option>
+												<option class="flatpickr-monthDropdown-month" value="11" tabindex="-1">December</option>
+											</select>
+											<div class="numInputWrapper" style="color: rgb(255, 255, 255);">
+												<input class="numInput cur-year" type="number" tabindex="-1" aria-label="Year" max="2025" style="color: rgb(255, 255, 255);">
+													<span class="arrowUp" style="color: rgb(255, 255, 255);"></span>
+													<span class="arrowDown" style="color: rgb(255, 255, 255);"></span>
+											</div>
+										</div>
+									</div>
+									<span class="flatpickr-next-month" style="fill: rgb(255, 255, 255);">
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17">
+											<g></g>
+											<path d="M13.207 8.472l-7.854 7.854-0.707-0.707 7.146-7.146-7.146-7.148 0.707-0.707 7.854 7.854z"></path>
+										</svg>
+									</span>
+								</div>
+								<div class="flatpickr-innerContainer">
+									<div class="flatpickr-rContainer">
+										<div class="flatpickr-weekdays" style="background: rgb(0, 0, 0); color: rgb(255, 255, 255);">
+											<div class="flatpickr-weekdaycontainer">
+												<span class="flatpickr-weekday" style="color: rgb(255, 255, 255);">
+													Sun
+												</span>
+												<span class="flatpickr-weekday" style="color: rgb(255, 255, 255);">Mon</span>
+												<span class="flatpickr-weekday" style="color: rgb(255, 255, 255);">Tue</span>
+												<span class="flatpickr-weekday" style="color: rgb(255, 255, 255);">Wed</span>
+												<span class="flatpickr-weekday" style="color: rgb(255, 255, 255);">Thu</span>
+												<span class="flatpickr-weekday" style="color: rgb(255, 255, 255);">Fri</span>
+												<span class="flatpickr-weekday" style="color: rgb(255, 255, 255);">
+													Sat
+												</span>
+											</div>
+										</div>
+										<div class="flatpickr-days" tabindex="-1">
+											<div class="dayContainer">
+												<span class="flatpickr-day prevMonthDay" aria-label="May 29, 2022" tabindex="-1">29</span>
+												<span class="flatpickr-day prevMonthDay" aria-label="May 30, 2022" tabindex="-1">30</span>
+												<span class="flatpickr-day prevMonthDay" aria-label="May 31, 2022" tabindex="-1">31</span>
+												<span class="flatpickr-day" aria-label="June 1, 2022" tabindex="-1">1</span>
+												<span class="flatpickr-day" aria-label="June 2, 2022" tabindex="-1">2</span>
+												<span class="flatpickr-day" aria-label="June 3, 2022" tabindex="-1">3</span>
+												<span class="flatpickr-day" aria-label="June 4, 2022" tabindex="-1">4</span>
+												<span class="flatpickr-day" aria-label="June 5, 2022" tabindex="-1">5</span>
+												<span class="flatpickr-day" aria-label="June 6, 2022" tabindex="-1">6</span>
+												<span class="flatpickr-day" aria-label="June 7, 2022" tabindex="-1">7</span>
+												<span class="flatpickr-day" aria-label="June 8, 2022" tabindex="-1">8</span>
+												<span class="flatpickr-day" aria-label="June 9, 2022" tabindex="-1">9</span>
+												<span class="flatpickr-day" aria-label="June 10, 2022" tabindex="-1">10</span>
+												<span class="flatpickr-day" aria-label="June 11, 2022" tabindex="-1">11</span>
+												<span class="flatpickr-day" aria-label="June 12, 2022" tabindex="-1">12</span>
+												<span class="flatpickr-day" aria-label="June 13, 2022" tabindex="-1">13</span>
+												<span class="flatpickr-day" aria-label="June 14, 2022" tabindex="-1">14</span>
+												<span class="flatpickr-day" aria-label="June 15, 2022" tabindex="-1">15</span>
+												<span class="flatpickr-day" aria-label="June 16, 2022" tabindex="-1">16</span>
+												<span class="flatpickr-day" aria-label="June 17, 2022" tabindex="-1">17</span>
+												<span class="flatpickr-day" aria-label="June 18, 2022" tabindex="-1">18</span>
+												<span class="flatpickr-day" aria-label="June 19, 2022" tabindex="-1">19</span>
+												<span class="flatpickr-day" aria-label="June 20, 2022" tabindex="-1">20</span>
+												<span class="flatpickr-day" aria-label="June 21, 2022" tabindex="-1">21</span>
+												<span class="flatpickr-day" aria-label="June 22, 2022" tabindex="-1">22</span>
+												<span class="flatpickr-day" aria-label="June 23, 2022" tabindex="-1">23</span>
+												<span class="flatpickr-day" aria-label="June 24, 2022" tabindex="-1">24</span>
+												<span class="flatpickr-day" aria-label="June 25, 2022" tabindex="-1">25</span>
+												<span class="flatpickr-day" aria-label="June 26, 2022" tabindex="-1">26</span>
+												<span class="flatpickr-day" aria-label="June 27, 2022" tabindex="-1">27</span>
+												<span class="flatpickr-day" aria-label="June 28, 2022" tabindex="-1">28</span>
+												<span class="flatpickr-day" aria-label="June 29, 2022" tabindex="-1">29</span>
+												<span class="flatpickr-day" aria-label="June 30, 2022" tabindex="-1">30</span>
+												<span class="flatpickr-day nextMonthDay" aria-label="July 1, 2022" tabindex="-1">1</span>
+												<span class="flatpickr-day nextMonthDay" aria-label="July 2, 2022" tabindex="-1">2</span>
+												<span class="flatpickr-day nextMonthDay" aria-label="July 3, 2022" tabindex="-1">3</span>
+												<span class="flatpickr-day nextMonthDay" aria-label="July 4, 2022" tabindex="-1">4</span>
+												<span class="flatpickr-day nextMonthDay" aria-label="July 5, 2022" tabindex="-1">5</span>
+												<span class="flatpickr-day nextMonthDay" aria-label="July 6, 2022" tabindex="-1">6</span>
+												<span class="flatpickr-day nextMonthDay" aria-label="July 7, 2022" tabindex="-1">7</span>
+												<span class="flatpickr-day nextMonthDay" aria-label="July 8, 2022" tabindex="-1">8</span>
+												<span class="flatpickr-day nextMonthDay" aria-label="July 9, 2022" tabindex="-1">9</span>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 					</div>
+					<div id="datePickerContainer" style="margin-bottom: 10px;"></div>
+					Please enter the original release date.
+					<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span>
+				</div>
 
-					<!-- Original Release Date and Language -->
+				<!-- Explicit and Cover Art Check -->
+				<div>
 					<div>
-						<label for="originalReleaseDate" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Original Release Date</label>
-						<input type="text" id="originalReleaseDate" name="originalReleaseDate" placeholder="Select date" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;" readonly="">
-							<div id="datePickerContainer" style="margin-bottom: 10px;"></div>
-							Please enter the original release date.
-							<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span>
+						<label for="explicit" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Explicit</label>
+						<select id="explicit" name="explicit" required="" style="width: 100%; height: 40px; font-size: 16px; background-color: #333; color: white; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
+							<option value="">Select</option>
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+						</select>
+						<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Does your content contain profanity?
+					</div>
+					<div>
+						<label for="coverArtCheck" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Cover Art Check</label>
+						<select id="coverArtCheck" name="coverArtCheck" required="" style="width: 100%; height: 40px; font-size: 16px; background-color: #333; color: white; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
+							<option value="">Select</option>
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+						</select>
+						<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Cover art ONLY contains artist name and release name.<br>
+							Cover art is not super blurry/pixelated when zoomed in. <br> Cover art has no borders.
+						</div>
+				</div>
+
+				<!-- Song upload -->
+				<div>
+					<div>
+						<label for="uploadMusic" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Upload Music</label>
+						<input type="url" id="uploadMusic" name="uploadMusic" required="" placeholder="Enter link to your music" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
+							<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Your final step. Follow the instructions <a href="#" style="color: #ff0000;font-size: 14px;" onclick="showInstructions()">here.</a>
 						</div>
 
-					<!-- Explicit and Cover Art Check -->
-					<div>
-						<div>
-							<label for="explicit" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Explicit</label>
-							<select id="explicit" name="explicit" required="" style="width: 100%; height: 40px; font-size: 16px; background-color: #333; color: white; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
-								<option value="">Select</option>
-								<option value="Yes">Yes</option>
-								<option value="No">No</option>
-							</select>
-							<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Does your content contain profanity?
-						</div>
-						<div>
-							<label for="coverArtCheck" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Cover Art Check</label>
-							<select id="coverArtCheck" name="coverArtCheck" required="" style="width: 100%; height: 40px; font-size: 16px; background-color: #333; color: white; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
-								<option value="">Select</option>
-								<option value="Yes">Yes</option>
-								<option value="No">No</option>
-							</select>
-							<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Cover art ONLY contains artist name and release name. Cover art is not super blurry/pixelated when zoomed in. Cover art has no borders.
-						</div>
-					</div>
+					<script>
+						function showInstructions() {
+						var message = `HOW TO UPLOAD YOUR MUSIC\n\n1. Ensure your song files are in WAV format, 16-bit, and 44.1 kHz.\n\n2. Name your song files "Track Number Artist Name - Song Name" (e.g., "1 SICK LEGEND - Arcadia").\n\n3. Ensure your artwork is 3000x3000 pixels.\n\n4. Organize songs and artwork in a folder named after your album/single.\n\n5. On Windows, right-click the folder, select "Send to" -> "Compressed (zipped) folder". On Mac, right-click the folder, and select "Compress".\n\n6. Upload the ZIP folder to a cloud storage service (e.g., Google Drive, Dropbox).\n\n7. Copy the shareable link and paste it in the "Upload Music" field.`;
+						alert(message);
+						}
+					</script>
+				</div>
 
-					<!-- Song upload -->
-					<div>
-						<div>
-							<label for="uploadMusic" style="margin: 5px 0; color: white; font-size: 18px; display: block;">Upload Music</label>
-							<input type="url" id="uploadMusic" name="uploadMusic" required="" placeholder="Enter link to your music" style="color: white; width: 100%; height: 40px; font-size: 16px; background-color: #333; border: 1px solid #555; padding: 5px 10px; margin-bottom: 10px;">
-								<span style="font-size: 14px; color: #ff6b6b;">[REQUIRED]</span> Your final step. Follow the instructions <a href="#" style="color: #4CAF50; font-size: 14px;" onclick="showInstructions()">here.</a>
-							</div>
+				<!-- Submit button -->
+				<div style="text-align: center; margin-top: 20px;">
+					<button type="submit" style="width: 100%;height: 40px;font-size: 18px;background-color: #c20000;color: white;border: none;cursor: pointer;">Submit</button>
+				</div>
 
-						<script>
-							function showInstructions() {
-							var message = `HOW TO UPLOAD YOUR MUSIC\n\n1. Ensure your song files are in WAV format, 16-bit, and 44.1 kHz.\n\n2. Name your song files "Track Number Artist Name - Song Name" (e.g., "1 SICK LEGEND - Arcadia").\n\n3. Ensure your artwork is 3000x3000 pixels.\n\n4. Organize songs and artwork in a folder named after your album/single.\n\n5. On Windows, right-click the folder, select "Send to" -> "Compressed (zipped) folder". On Mac, right-click the folder, and select "Compress".\n\n6. Upload the ZIP folder to a cloud storage service (e.g., Google Drive, Dropbox).\n\n7. Copy the shareable link and paste it in the "Upload Music" field.`;
-							alert(message);
-							}
-						</script>
-					</div>
+			</form>
 
-					<!-- Submit button -->
-					<div style="text-align: center; margin-top: 20px;">
-						<button type="submit" style="width: 100%; height: 40px; font-size: 18px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">Submit</button>
-					</div>
-
-				</form>
-
-			</div>
 		</div>
-		<script>
-			function handleSubmit(event) {
-			event.preventDefault(); // Prevent default form submission
-
-			// Extract form data
-			var formData = new FormData(document.getElementById("releaseForm"));
-
-			// Convert formData to a JSON object
-			var formObject = {};
-			formData.forEach((value, key) => {
-			formObject[key] = value;
-			});
-
-			// Send data to the server
-			fetch('/submit-form', {
-			method: 'POST',
-			headers: {
-			'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(formObject)
-			})
-			.then(response => response.json())
-			.then(data => {
-			if (data.success) {
-			// Redirect to the dashboard with a success message
-			window.location.href = '/dashboard?message=Form+submitted+successfully';
-			} else {
-			alert('Error saving form data.');
-			}
-			})
-			.catch(error => {
-			console.error('Error:', error);
-			alert('Error saving form data.');
-			});
-			}
-
-			// Update sub-genres function (no change needed here)
-			function updateSubGenres(genre) {
-			var subGenreSelect = document.getElementById("subGenre");
-			subGenreSelect.innerHTML = '<option value="">Select sub-genre</option>';
-			var subGenres = {
-			"Alternative": ["Indie Rock", "Grunge", "Emo"],
-			"Blues": ["Delta Blues", "Electric Blues", "Blues Rock"],
-			"Comedy": ["Musical Comedy", "Parody"],
-			"Country": ["Bluegrass", "Honky Tonk", "Country Pop"],
-			"Dance": ["House", "Techno", "Trance"],
-			"Electronic": ["Ambient", "Synthwave", "Dubstep"],
-			"Folk": ["Traditional Folk", "Folk Rock", "Indie Folk"],
-			"Hip-Hop/Rap": ["Trap", "Boom Bap", "Conscious Rap"],
-			"Jazz": ["Bebop", "Swing", "Fusion"],
-			"Latin": ["Reggaeton", "Salsa", "Bachata"],
-			"Pop": ["Synth-pop", "Dance-pop", "Electropop"],
-			"R&B/Soul": ["Neo Soul", "Contemporary R&B", "Motown"],
-			"Reggae": ["Roots Reggae", "Dancehall", "Dub"],
-			"Rock": ["Classic Rock", "Hard Rock", "Progressive Rock"],
-			"World": ["Afrobeat", "Flamenco", "Celtic"]
-			// Add more sub-genres as needed
-			};
-
-			if (subGenres[genre]) {
-			subGenres[genre].forEach(function(subGenre) {
-			var option = document.createElement("option");
-			option.value = subGenre;
-			option.textContent = subGenre;
-			subGenreSelect.appendChild(option);
-			});
-			}
-			}
-		</script>
-
 	</div>
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-	<!-- Include Flatpickr library script -->
-	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
 	<script>
-		// Initialize Flatpickr for the original release date input field
-		flatpickr("#originalReleaseDate", {
-		// Options for Flatpickr
-		dateFormat: "Y-m-d", // Date format
-		defaultDate: "today", // Default date
-		altInput: true, // Enable the alternate input field
-		altFormat: "F j, Y", // Alternate input date format
-		inline: false, // Show the calendar inline
-		static: true // Keep the calendar open after selecting a date
-		});
-	</script>
+		function handleSubmit(event) {
+		event.preventDefault(); // Prevent default form submission
 
+		// Extract form data
+		var formData = new FormData(document.getElementById("releaseForm"));
 
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-	<!-- Include Flatpickr library script -->
-	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-		flatpickr("#originalReleaseDate", {
-		dateFormat: "Y-m-d",
-		defaultDate: "2024-06-27",
-		maxDate: new Date().fp_incr(365), // Allows dates up to 1 year in the future
-		disableMobile: "false",
-		allowInput: true,
-		clickOpens: true,
-		inline: true,
-		static: true,
-		appendTo: document.getElementById('datePickerContainer'),
-		onReady: function(dateObj, dateStr, instance) {
-		var calendarElem = instance.calendarContainer;
-		calendarElem.style.background = "#000000";
-		calendarElem.style.color = "#ffffff";
-		calendarElem.style.boxShadow = "0 3px 13px rgba(0,0,0,0.08)";
-		calendarElem.style.width = "100%";
-		calendarElem.style.maxWidth = "400px";
-
-		function styleCalendar() {
-		// Style days
-		var dayElems = calendarElem.querySelectorAll('.flatpickr-day');
-		dayElems.forEach(function(dayElem) {
-		dayElem.style.color = "#ffffff";
-		dayElem.style.background = "#000000";
-		dayElem.style.border = "1px solid #333333";
+		// Convert formData to a JSON object
+		var formObject = {};
+		formData.forEach((value, key) => {
+		formObject[key] = value;
 		});
 
-		// Style month dropdown and navigation
-		var monthElements = calendarElem.querySelectorAll('.flatpickr-month, .flatpickr-monthDropdown-months, .flatpickr-weekdays');
-		monthElements.forEach(function(elem) {
-		elem.style.background = "#000000";
-		elem.style.color = "#ffffff";
-		});
-
-		// Style weekday names
-		var weekdayElems = calendarElem.querySelectorAll('.flatpickr-weekday');
-		weekdayElems.forEach(function(elem) {
-		elem.style.color = "#ffffff";
-		});
-
-		// Style arrows
-		var arrows = calendarElem.querySelectorAll('.flatpickr-prev-month, .flatpickr-next-month');
-		arrows.forEach(function(arrow) {
-		arrow.style.fill = "#ffffff";
-		});
-
-		// Style current month and year
-		var currentMonthYear = calendarElem.querySelectorAll('.cur-month, .cur-year, .numInputWrapper, .numInput, .arrowUp, .arrowDown');
-		currentMonthYear.forEach(function(elem) {
-		elem.style.color = "#ffffff";
-		});
-
-		// Style month dropdown options
-		var monthOptions = calendarElem.querySelectorAll('.flatpickr-monthDropdown-month');
-		monthOptions.forEach(function(option) {
-		option.style.color = "#ffffff";
-		option.style.background = "#000000";
-		});
-		}
-
-		styleCalendar();
-
-		// Re-apply styles whenever the month or year changes
-		instance.config.onMonthChange = styleCalendar;
-		instance.config.onYearChange = styleCalendar;
+		// Send data to the server
+		fetch('/submit-form', {
+		method: 'POST',
+		headers: {
+		'Content-Type': 'application/json'
 		},
-		onChange: function(selectedDates, dateStr, instance) {
-		document.getElementById('originalReleaseDate').value = dateStr;
+		body: JSON.stringify(formObject)
+		})
+		.then(response => response.json())
+		.then(data => {
+		if (data.success) {
+		// Redirect to the dashboard with a success message
+		window.location.href = '/dashboard?message=Form+submitted+successfully';
+		} else {
+		alert('Error saving form data.');
 		}
+		})
+		.catch(error => {
+		console.error('Error:', error);
+		alert('Error saving form data.');
 		});
+		}
+
+		// Update sub-genres function (no change needed here)
+		function updateSubGenres(genre) {
+		var subGenreSelect = document.getElementById("subGenre");
+		subGenreSelect.innerHTML = '<option value="">Select sub-genre</option>';
+		var subGenres = {
+		"Alternative": ["Indie Rock", "Grunge", "Emo"],
+		"Blues": ["Delta Blues", "Electric Blues", "Blues Rock"],
+		"Comedy": ["Musical Comedy", "Parody"],
+		"Country": ["Bluegrass", "Honky Tonk", "Country Pop"],
+		"Dance": ["House", "Techno", "Trance"],
+		"Electronic": ["Ambient", "Synthwave", "Dubstep"],
+		"Folk": ["Traditional Folk", "Folk Rock", "Indie Folk"],
+		"Hip-Hop/Rap": ["Trap", "Boom Bap", "Conscious Rap"],
+		"Jazz": ["Bebop", "Swing", "Fusion"],
+		"Latin": ["Reggaeton", "Salsa", "Bachata"],
+		"Pop": ["Synth-pop", "Dance-pop", "Electropop"],
+		"R&B/Soul": ["Neo Soul", "Contemporary R&B", "Motown"],
+		"Reggae": ["Roots Reggae", "Dancehall", "Dub"],
+		"Rock": ["Classic Rock", "Hard Rock", "Progressive Rock"],
+		"World": ["Afrobeat", "Flamenco", "Celtic"]
+		// Add more sub-genres as needed
+		};
+
+		if (subGenres[genre]) {
+		subGenres[genre].forEach(function(subGenre) {
+		var option = document.createElement("option");
+		option.value = subGenre;
+		option.textContent = subGenre;
+		subGenreSelect.appendChild(option);
 		});
+		}
+		}
 	</script>

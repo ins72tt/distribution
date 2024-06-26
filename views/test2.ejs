@@ -243,8 +243,8 @@
 		dateFormat: "Y-m-d",
 		defaultDate: "2024-06-27",
 		maxDate: new Date().fp_incr(365), // Allows dates up to 1 year in the future
-		disableMobile: "false",
-		allowInput: true,
+		disableMobile: "true",
+		allowInput: false,
 		clickOpens: true,
 		inline: true,
 		static: true,
@@ -257,6 +257,7 @@
 		calendarElem.style.width = "100%";
 		calendarElem.style.maxWidth = "400px";
 
+		function styleCalendar() {
 		// Style days
 		var dayElems = calendarElem.querySelectorAll('.flatpickr-day');
 		dayElems.forEach(function(dayElem) {
@@ -285,10 +286,24 @@
 		});
 
 		// Style current month and year
-		var currentMonthYear = calendarElem.querySelector('.cur-month, .cur-year');
-		if (currentMonthYear) {
-		currentMonthYear.style.color = "#ffffff";
+		var currentMonthYear = calendarElem.querySelectorAll('.cur-month, .cur-year, .numInputWrapper, .numInput, .arrowUp, .arrowDown');
+		currentMonthYear.forEach(function(elem) {
+		elem.style.color = "#ffffff";
+		});
+
+		// Style month dropdown options
+		var monthOptions = calendarElem.querySelectorAll('.flatpickr-monthDropdown-month');
+		monthOptions.forEach(function(option) {
+		option.style.color = "#ffffff";
+		option.style.background = "#000000";
+		});
 		}
+
+		styleCalendar();
+
+		// Re-apply styles whenever the month or year changes
+		instance.config.onMonthChange = styleCalendar;
+		instance.config.onYearChange = styleCalendar;
 		},
 		onChange: function(selectedDates, dateStr, instance) {
 		document.getElementById('originalReleaseDate').value = dateStr;

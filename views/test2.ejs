@@ -175,8 +175,7 @@ If you don't have one, we will take care of it.
 		alert('Error saving form data.');
 		});
 		}
-</script>
-<script>
+
 		// Update sub-genres function (no change needed here)
 		function updateSubGenres(genre) {
 		var subGenreSelect = document.getElementById("subGenre");
@@ -209,8 +208,7 @@ If you don't have one, we will take care of it.
 		});
 		}
 		}
-	</script>
-	<script>
+
 		document.addEventListener('DOMContentLoaded', function() {
 		flatpickr("#originalReleaseDate", {
 		dateFormat: "Y-m-d",
@@ -226,45 +224,47 @@ If you don't have one, we will take care of it.
 		var calendarElem = instance.calendarContainer;
 
 		function applyStyles() {
-		calendarElem.style.cssText = `
-		background: #000000 !important;
-		color: #ffffff !important;
-		box-shadow: 0 3px 13px rgba(0,0,0,0.08);
-		width: 100%;
-		max-width: 400px;
-		`;
+		calendarElem.style.background = "#000000";
+		calendarElem.style.color = "#ffffff";
+		calendarElem.style.boxShadow = "0 3px 13px rgba(0,0,0,0.08)";
+		calendarElem.style.width = "100%";
+		calendarElem.style.maxWidth = "400px";
 
-		calendarElem.querySelectorAll('*').forEach(function(elem) {
-		elem.style.cssText += `
-		background: #000000 !important;
-		color: #ffffff !important;
-		fill: #ffffff !important;
-		`;
+		calendarElem.querySelectorAll('.flatpickr-monthDropdown-months, .flatpickr-weekdaycontainer, .flatpickr-weekday, .flatpickr-weekdays, .flatpickr-months').forEach(function(elem) {
+		elem.style.background = "#000000";
+		elem.style.color = "#ffffff";
 		});
 
-		calendarElem.querySelectorAll('.flatpickr-day').forEach(function(dayElem) {
-		dayElem.style.cssText += `
-		border: 1px solid #333333 !important;
-		`;
+		calendarElem.querySelectorAll('.flatpickr-day:not(.selected)').forEach(function(dayElem) {
+		dayElem.style.color = "#ffffff";
+		dayElem.style.background = "#000000";
+		dayElem.style.border = "1px solid #333333";
 		});
 
 		calendarElem.querySelectorAll('.flatpickr-day.selected').forEach(function(dayElem) {
-		dayElem.style.cssText += `
-		background: #4CAF50 !important;
-		`;
+		dayElem.style.background = "#4CAF50";
+		dayElem.style.borderColor = "#4CAF50";
+		});
+
+		calendarElem.querySelectorAll('.flatpickr-day.today').forEach(function(dayElem) {
+		dayElem.style.border = "1px solid #4CAF50";
+		});
+
+		calendarElem.querySelectorAll('.flatpickr-prev-month svg, .flatpickr-next-month svg').forEach(function(arrow) {
+		arrow.style.fill = "#ffffff";
+		});
+
+		calendarElem.querySelectorAll('.cur-month, .cur-year, .numInputWrapper, .numInput').forEach(function(elem) {
+		elem.style.color = "#ffffff";
+		});
+
+		calendarElem.querySelectorAll('.flatpickr-monthDropdown-month').forEach(function(option) {
+		option.style.color = "#ffffff";
+		option.style.background = "#000000";
 		});
 		}
 
 		applyStyles();
-
-		// Use MutationObserver to reapply styles whenever the DOM changes
-		var observer = new MutationObserver(applyStyles);
-		observer.observe(calendarElem, {
-		childList: true,
-		subtree: true,
-		attributes: true,
-		characterData: true
-		});
 
 		// Reapply styles on month/year change
 		instance.config.onMonthChange = applyStyles;
@@ -272,6 +272,7 @@ If you don't have one, we will take care of it.
 		},
 		onChange: function(selectedDates, dateStr, instance) {
 		document.getElementById('originalReleaseDate').value = dateStr;
+		instance.config.onMonthChange(); // Reapply styles after selection
 		}
 		});
 		});
